@@ -1,0 +1,87 @@
+{
+  "studios":
+  [{
+  "id":12,
+  "name": "Фламинго",
+  "price": 1200,
+  "view":["https://128121.selcdn.ru/react/1.jpg"],
+  "params":["птица","окно"],
+    "date": "2016-06-08T19:03:23.000Z",
+    "title": "Commodo laborum sit nostru"
+
+  },
+  {
+    "id":13,
+    "name": "Семейная",
+    "price": 1800,
+    "view":["https://128121.selcdn.ru/react/2.jpg"],
+    "params":["камин","качель","окно"],
+    "date": "2017-06-08T19:03:23.000Z",
+    "title": "Commodo laborum sit nostru2"
+
+  },
+  {
+    "id":15,
+    "name": "Ночная",
+    "price": 2000,
+    "view":["https://128121.selcdn.ru/react/3.jpg"],
+    "params":["зеркало","стул","портрет"],
+    "date": "2016-06-08T19:03:23.000Z",
+    "title": "Commodo laborum sit nostru3"
+  },
+  {
+    "id":122,
+    "name": "Калибри",
+    "price": 1300,
+    "view":["https://128121.selcdn.ru/react/4.jpg"],
+    "params":["картина","слон","стекло"],
+    "date": "2015-06-08T19:03:23.000Z",
+    "title": "Commodo laborum sit nostru4"
+  },
+  {
+    "id":123,
+    "name": "Стильная",
+    "price": 1500,
+    "view":["https://128121.selcdn.ru/react/5.jpg"],
+    "params":["занавес","тумба"],
+    "date": "2016-06-08T19:03:23.000Z",
+    "title": "Commodo laborum sit nostru5"
+  },
+  {
+    "id":100,
+    "name": "Лофт",
+    "price": 2200,
+    "view":["https://128121.selcdn.ru/react/6.jpg"],
+    "params":[],
+    "date": "2013-06-08T19:03:23.000Z",
+    "title": "Commodo laborum sit nostru6"
+  },
+  {
+    "id":178,
+    "name": "Таганка",
+    "price": 1100,
+    "view":["https://128121.selcdn.ru/react/7.jpg"],
+    "params":["картина","обои","окно"],
+    "date": "2016-06-08T19:03:23.000Z",
+    "title": "Commodo laborum sit nostru7"
+  },
+  {
+    "id":1221,
+    "name": "Лондон",
+    "price": 1250,
+    "view":["https://128121.selcdn.ru/react/8.jpg"],
+    "params":["камин","картина","окно"],
+    "date": "2016-06-08T19:03:23.000Z",
+    "title": "Commodo laborum sit nostru8"
+  },
+  {
+    "id":1891,
+    "name": "Уют",
+    "price": 1450,
+    "view":["https://128121.selcdn.ru/react/9.jpg"],
+    "params":["камин","обои","картина"],
+    "date": "2016-06-08T19:03:23.000Z",
+    "title": "Commodo laborum sit nostru9"
+  }
+]
+}

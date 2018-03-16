@@ -1,0 +1,12 @@
+
+ul.photoStudios-ul {
+    text-align: center;
+    list-style-type: none;
+}
+ul.photoStudios-ul li {
+    float:left;
+}
+ul.photoStudios-ul li:nth-child(3n+4) {
+    clear:left;
+    float:left;
+}
