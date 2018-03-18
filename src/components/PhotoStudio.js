@@ -21,6 +21,8 @@ export default class PhotoStudio extends Component {
 
   render() {
     const {photoStudio} = this.props
+
+
     console.log(this.props)
     return (
       <div className='photoStudioListView' style={{ maxWidth: 300, float: 'left' }}>
@@ -28,13 +30,12 @@ export default class PhotoStudio extends Component {
           <div className="container-div" style={{ float: 'none', margin: '0' }}>
             {photoStudio.name}
             <img src={photoStudio.view}/>
-            <div className="tag">
-              <Tag className="background-color-tag-blue" style={{ marginTop: '30px' }}>{photoStudio.price}</Tag>
-            </div>
+            <Tag className="background-color-tag-blue" style={{ marginTop: '30px' }}>{photoStudio.price}</Tag>
+            <Footer className="container-div-footer" style={{ margin: '0', textAlign: 'center' }}>
+              <span> Pavel Shevchenko © 2018 </span>
+            </Footer>
           </div>
-          <div className="container-div-footer" style={{ float: 'none', margin: '0', textAlign: 'center' }}>
-              Pavel Shevchenko © 2018
-          </div>
+
         </div>
       </div>
     )

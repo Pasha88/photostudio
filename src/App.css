@@ -10,7 +10,7 @@
 }
 
 .App-header {
-  background-color: #222;
+  background-color: #2222;
   height: 100px;
   padding: 20px;
   color: white;
@@ -37,8 +37,10 @@
 
 .background-color-tag-blue {
   float: right;
-  margin-right: 0 !important;
+  margin: -72px;
+  padding: 0;
   border-radius: 0px;
+  position: absolute;
   width: 72px;
   height: 24px;
   background: #2f65eb;
@@ -59,8 +61,11 @@
 
 .container-div-footer {
   margin-bottom: 10px;
+  height: 30px;
   width: 100%;
+  padding: 0;
   position:relative;
+  display:block;
   border: 1px solid #000000;
 }
 
