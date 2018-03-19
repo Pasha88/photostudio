@@ -1,19 +1,15 @@
 import React, {Component} from 'react'
 import PhotoStudioList from '../components/PhotoStudioList'
 import items from '../studio.json'
-import {Slider, Switch} from 'antd'
-import { Layout, Menu, Icon } from 'antd'
-import { Button } from 'antd'
-import { Input, AutoComplete } from 'antd'
-import { InputNumber } from 'antd'
-import { Tag } from 'antd'
 import 'bootstrap/dist/css/bootstrap.css'
 import '../App.css';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import PriceFilter from '../components/PriceFilter'
+import SearchBar from '../components/SearchBar'
 import * as priceFilterActions from '../actions/priceFilterActions'
-import PhotoStudio from '../components/PhotoStudio'
+import * as searchBarActions from '../actions/searchBarActions'
+import { Row, Col } from 'antd';
 
 
 class App extends Component {
@@ -22,19 +18,22 @@ class App extends Component {
     super(props)
 
     this.state = {
-      photoStudios: items.studios,
-      sortStatus: null
+      photoStudios: items.studios
     }
 
     this.handleLessMoreChange = this.handleLessMoreChange.bind(this)
+    this.searchWord = this.searchWord.bind(this)
   }
 
+  /*Чтобы одно не перебивало другое, Последовательно фильтруем*/
   componentWillReceiveProps(nextProps) {
-    this.handleLessMoreChange(nextProps["priceFilter"]["more"], nextProps["priceFilter"]["less"])
+    this.setState({photoStudios: items.studios}, function () {
+      this.handleLessMoreChange(nextProps["priceFilter"]["more"], nextProps["priceFilter"]["less"], nextProps["searchBar"]["word"])
+    });
   }
 
   /*Фильтр по цене - больше, меньше*/
-  handleLessMoreChange(valueMore, valueLess) {
+  handleLessMoreChange(valueMore, valueLess, searchWord) {
     let arr = []
 
     this.setState({photoStudios: items.studios}, function () {
@@ -44,9 +43,24 @@ class App extends Component {
         less: valueLess,
         more: valueMore
       }, function () {
-        //console.log(this.state.photoStudios);
+        /*Если пустое слово, то фильтр общий передаем*/
+        if(searchWord) {
+          this.searchWord(searchWord)
+        }
       });
     });
+  }
+
+  searchWord(value) {
+    let arr = []
+
+    arr = this.state.photoStudios.filter(item => (item.name === value))
+    this.setState({
+      photoStudios: arr
+    }, function () {
+      //console.log(this.state.photoStudios);
+    });
+
   }
 
 
@@ -54,18 +68,14 @@ class App extends Component {
   componentWillMount() {
     let arr = []
     arr = this.directOrder()
-    this.setState({
-      sortStatus: false
-    })
 
-    this.setState({
-      photoStudios: arr
-    })
+    this.setState({photoStudios: items.studios}, function () {
+      arr = this.directOrder()
+    });
   }
 
   /*Прямой порядок сортировки для цены от меньшего к большему*/
   directOrder() {
-    console.log(this.state.photoStudios)
     this.state.photoStudios.sort((a, b) => {
       return (a.price > b.price) ? 1 : ((b.price > a.price) ? -1 : 0)
     });
@@ -82,17 +92,33 @@ class App extends Component {
 
   render() {
     const {priceFilter} = this.props
+    const {searchBar} = this.props
     const {setLess, setMore} = this.props.priceFilterActions
+    const {setSearchWord} = this.props.searchBarActions;
+
     const my_photoStudios = this.state.photoStudios
 
     return (
-      <div className="container">
-        <div className="jumbotron">
-          <div className="row">
-            <PriceFilter more={priceFilter.more} less={priceFilter.less} setLess={setLess} setMore={setMore}/>
-          </div>
-          <PhotoStudioList photoStudios={my_photoStudios}/>
-        </div>
+      <div>
+        <Row>
+          <Col span={16} className="main">
+            <div className="app-main">
+              <PhotoStudioList photoStudios={my_photoStudios}/>
+            </div>
+          </Col>
+          <Col span={6} className="rigthBar">
+            <Row className="searchBar-div">
+              <Col span={18}>
+                <SearchBar word={searchBar.word} setSearchWord={setSearchWord}/>
+              </Col>
+            </Row>
+            <Row className="priceFilter-div">
+              <Col span={18}>
+                <PriceFilter more={priceFilter.more} less={priceFilter.less} setLess={setLess} setMore={setMore}/>
+              </Col>
+            </Row>
+          </Col>
+        </Row>
       </div>
     )
   }
@@ -100,13 +126,15 @@ class App extends Component {
 
 function mapStateToProps(state) {
   return {
-    priceFilter: state.priceFilter
+    priceFilter: state.priceFilter,
+    searchBar: state.searchBar
   }
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    priceFilterActions: bindActionCreators(priceFilterActions, dispatch)
+    priceFilterActions: bindActionCreators(priceFilterActions, dispatch),
+    searchBarActions: bindActionCreators(searchBarActions, dispatch)
   }
 }
 

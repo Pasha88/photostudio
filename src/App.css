@@ -82,3 +82,33 @@
   margin-left: 10px;
   margin-right: 10px;
 }
+
+.app-right {
+  left: 0%;
+  margin-top: 20px;
+}
+
+.rigthBar {
+  padding-top: 100px;
+}
+
+.searchBar-div {
+
+}
+
+.priceFilter-div {
+  margin-top: 10px;
+}
+
+div#container
+{
+  position: relative;
+}
+
+.searchBar {
+  padding-left: 80px;
+}
+
+.ant-input-number {
+  max-width: 100px;
+}

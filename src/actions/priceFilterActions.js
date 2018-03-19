@@ -1,19 +1,19 @@
 import { SET_MORE, SET_LESS } from '../constants/PriceFilter'
 
-export function setMore(year) {
+export function setMore(price) {
 
   return {
     type: SET_MORE,
-    payload: year
+    payload: price
   }
 
 }
 
-export function setLess(year) {
+export function setLess(price) {
 
   return {
     type: SET_LESS,
-    payload: year
+    payload: price
   }
 
 }

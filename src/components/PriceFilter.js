@@ -1,7 +1,7 @@
 import React, { PropTypes, Component } from 'react'
-import ReactDOM from 'react-dom';
 import {Slider} from 'antd'
 import { InputNumber } from 'antd'
+import { Row, Col } from 'antd';
 import 'bootstrap/dist/css/bootstrap.css'
 import '../App.css';
 
@@ -39,18 +39,29 @@ export default class PriceFilter extends Component {
   render() {
     const {less, more} = this.props
 
-    return <div className='priceFilter'>
-      Стоимость:
-      <InputNumber min={1} max={2500} value={more} defaultValue={this.state.more} onChange={this.handleMoreChange} />
-      -
-      <InputNumber min={1} max={2500} value={less} defaultValue={this.state.less} onChange={this.handleLessChange} />
-      <Slider step={1} range defaultValue={[1, 2500]}  min={1} max={2500} onChange={this.handleSliderChange}/>
-    </div>
+    return (
+      <div className='priceFilter'>
+        <Row>
+          <Col span={4}>
+            Стоимость:
+          </Col>
+          <Col span={6}>
+          </Col>
+          <Col span={14}>
+          <InputNumber min={1} max={2500} value={more} defaultValue={this.state.more} onChange={this.handleMoreChange} />
+            -
+            <InputNumber min={1} max={2500} value={less} defaultValue={this.state.less} onChange={this.handleLessChange} />
+          </Col>
+        </Row>
+        <Row>
+          <Col span={24}>
+            <Slider step={1} range defaultValue={[1, 2500]}  min={1} max={2500} onChange={this.handleSliderChange}/>
+          </Col>
+        </Row>
+    </div>)
   }
 }
 
 PriceFilter.propTypes = {
-  // year: React.PropTypes.number.isRequired,
-  // photos: React.PropTypes.array.isRequired,
-  // setYear: React.PropTypes.func.isRequired
+
 }

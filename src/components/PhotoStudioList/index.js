@@ -22,7 +22,7 @@ export default class photoStudioList extends Component {
 
   render() {
     const photoStudioElements = this.state.photoStudiosState.map((photoStudio, index) =>
-      <li key = {photoStudio.id} data-price={photoStudio.price} className="photoStudio-list__li">
+      <li key = {photoStudio.id} data-price={photoStudio.price} className="photoStudio-list-li">
         <PhotoStudio photoStudio = {photoStudio} />
       </li>
     )
